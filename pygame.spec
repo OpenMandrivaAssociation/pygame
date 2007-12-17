@@ -18,7 +18,6 @@ Requires:	SDL >= 1.2.4
 BuildRequires:	python-numeric-devel >= 22.0-4mdk SDL_mixer-devel
 BuildRequires:	SDL_image-devel python-numeric >= 22.0-4mdk
 BuildRequires:	SDL_ttf-devel smpeg-devel >= 0.4 python-devel >= %{py_ver}
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 Provides:   python-pygame
 
 %description
