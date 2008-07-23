@@ -1,6 +1,6 @@
 %define name            pygame
 %define version 1.7.1
-%define release %mkrel 3
+%define release %mkrel 5
 %define lib_name_orig   lib%{name}
 %define lib_major       1.7
 %define lib_name        %mklibname %{name} %{lib_major}
