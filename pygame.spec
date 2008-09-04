@@ -1,15 +1,14 @@
 %define name            pygame
-%define version 1.7.1
-%define release %mkrel 5
+%define version 1.8.1
+%define release %mkrel 1
 %define lib_name_orig   lib%{name}
-%define lib_major       1.7
+%define lib_major       1.8
 %define lib_name        %mklibname %{name} %{lib_major}
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source:		http://www.pygame.org/ftp/%{name}-%{version}release.tar.bz2
-Patch1:		python-pygame-1.7.1release-pep353.diff.bz2
 Summary:	Python module for interfacing with the SDL multimedia library
 License:	LGPL style
 Group:		System/Libraries
@@ -63,7 +62,6 @@ pygame.
 
 %prep
 %setup -q -n %{name}-%{version}release
-%patch1 -p0
 
 %build
 %__python config.py
@@ -82,7 +80,7 @@ pygame.
 %files
 %defattr(-,root,root)
 %py_platsitedir/*
-%doc WHATSNEW readme.txt 
+%doc WHATSNEW
 
 %files -n %{lib_name}-devel
 %defattr(-,root,root)
