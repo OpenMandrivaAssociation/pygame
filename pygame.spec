@@ -89,7 +89,7 @@ chmod 0644 %{py_platsitedir}/%{name}/*.ttf \
 %{py_platsitedir}/*
 %doc WHATSNEW
 
-%files -n %{lib_name}-devel
+%files devel
 %defattr(-,root,root)
 %{_includedir}/python%{pyver}/%{name}/
 
