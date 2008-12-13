@@ -68,17 +68,15 @@ Install the devel package if you want to build programs with pygame.
 %__python config.py
 %__python setup.py build
 
-# fix permission (for when it's installed by %doc)
-chmod 0644 WHATSNEW
+# Fix wrong permissions on various data files - AdamW 2008/12)
+chmod 0644 WHATSNEW \
+	lib/*.ttf \
+	lib/pygame_icon* \
+	lib/pygame.ico
 
 %install
 %__rm -rf %buildroot
 %__python setup.py install --prefix %{buildroot}%{_prefix}
-
-# Fix wrong permissions on various data files - AdamW 2008/12
-chmod 0644 %{py_platsitedir}/%{name}/*.ttf \
-	%{py_platsitedir}/%{name}/pygame_icon* \
-	%{py_platsitedir}/%{name}/pygame.ico
 
 %clean
 %__rm -rf %{buildroot}
