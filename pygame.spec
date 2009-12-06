@@ -1,7 +1,7 @@
 Name:		pygame
-Version:	1.8.1
-Release:	%{mkrel 4}
-Source:		http://www.pygame.org/ftp/%{name}-%{version}release.tar.bz2
+Version:	1.9.1
+Release:	%{mkrel 1}
+Source:		http://www.pygame.org/ftp/%{name}-%{version}release.tar.gz
 Summary:	Python module for interfacing with the SDL multimedia library
 License:	LGPLv2+
 Group:		System/Libraries
