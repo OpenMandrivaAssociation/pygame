@@ -2,6 +2,7 @@ Name:		pygame
 Version:	1.9.1
 Release:	%{mkrel 1}
 Source:		http://www.pygame.org/ftp/%{name}-%{version}release.tar.gz
+Patch0:		pygame-1.9.1-config.patch
 Summary:	Python module for interfacing with the SDL multimedia library
 License:	LGPLv2+
 Group:		System/Libraries
@@ -63,6 +64,7 @@ Install the devel package if you want to build programs with pygame.
 
 %prep
 %setup -q -n %{name}-%{version}release
+%patch0 -p1
 
 %build
 %__python config.py
