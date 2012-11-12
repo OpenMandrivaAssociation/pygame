@@ -1,0 +1,56 @@
+--- pygame-1.9.1release/config_unix.py.orig	2011-10-20 23:16:55.384424711 -0200
++++ pygame-1.9.1release/config_unix.py	2011-10-20 23:17:27.439591114 -0200
+@@ -21,6 +21,7 @@ origlibdirs = ['/lib','/lib64','/X11R6/l
+ 
+ def confirm(message):
+     "ask a yes/no question, return result"
++    return 1
+     reply = raw_input('\n' + message + ' [Y/n]:')
+     if reply and (reply[0].lower()) == 'n':
+         return 0
+--- pygame-1.9.1release/Setup.in.orig	2011-10-20 23:17:03.824468525 -0200
++++ pygame-1.9.1release/Setup.in	2011-10-20 23:17:36.862640053 -0200
+@@ -34,7 +34,7 @@ _numericsurfarray src/_numericsurfarray.
+ _numericsndarray src/_numericsndarray.c $(SDL) $(MIXER) $(DEBUG)
+ movie src/movie.c $(SDL) $(SMPEG) $(DEBUG)
+ scrap src/scrap.c $(SDL) $(SCRAP) $(DEBUG)
+-_camera src/_camera.c src/camera_v4l2.c src/camera_v4l.c $(SDL) $(DEBUG)
++_camera src/_camera.c src/camera_v4l2.c $(SDL) $(DEBUG)
+ pypm src/pypm.c $(SDL) $(PORTMIDI) $(PORTTIME) $(DEBUG)
+ 
+ GFX = src/SDL_gfx/SDL_gfxPrimitives.c 
+--- pygame-1.9.1release/src/camera.h.orig	2011-10-20 23:19:05.337099268 -0200
++++ pygame-1.9.1release/src/camera.h	2011-10-20 23:19:13.175139936 -0200
+@@ -39,7 +39,6 @@
+ 
+     #include <asm/types.h>          /* for videodev2.h */
+ 
+-    #include <linux/videodev.h>
+     #include <linux/videodev2.h>
+ #endif
+ 
+--- pygame-1.9.1release/src/_camera.c.orig	2011-10-20 23:17:12.919515707 -0200
++++ pygame-1.9.1release/src/_camera.c	2011-10-20 23:17:27.439591114 -0200
+@@ -160,20 +160,8 @@ PyObject* camera_start (PyCameraObject*
+ {
+ #if defined(__unix__)
+     if (v4l2_open_device(self) == 0) {
+-        if (v4l_open_device(self) == 0) {
+-            v4l2_close_device(self);
+-            return NULL;
+-        } else {
+-            self->camera_type = CAM_V4L;
+-            if (v4l_init_device(self) == 0) {
+-                v4l2_close_device(self);
+-                return NULL;
+-            }
+-            if (v4l_start_capturing(self) == 0) {
+-                v4l2_close_device(self);
+-                return NULL;
+-            }
+-        }
++	v4l2_close_device(self);
++	return NULL;
+     } else {
+         self->camera_type = CAM_V4L2;
+         if (v4l2_init_device(self) == 0) {
