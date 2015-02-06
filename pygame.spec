@@ -1,6 +1,6 @@
 Name:		pygame
 Version:	1.9.1
-Release:	5
+Release:	6
 Source:		http://www.pygame.org/ftp/%{name}-%{version}release.tar.gz
 Patch0:		pygame-1.9.1-config.patch
 Summary:	Python module for interfacing with the SDL multimedia library
