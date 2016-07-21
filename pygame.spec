@@ -1,15 +1,17 @@
+%define debug_package %{nil}
+
 Name:		pygame
 Version:	1.9.1
-Release:	6
+Release:	7
 Source:		http://www.pygame.org/ftp/%{name}-%{version}release.tar.gz
 Patch0:		pygame-1.9.1-config.patch
 Summary:	Python module for interfacing with the SDL multimedia library
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://pygame.org/
-BuildRequires:	python-devel
-BuildRequires:	python-numeric
-BuildRequires:	python-numeric-devel
+BuildRequires:	python2-devel
+BuildRequires:	python2-numpy
+BuildRequires:	python2-numpy-devel
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_ttf-devel
@@ -18,6 +20,7 @@ BuildRequires:	jpeg-devel
 BuildRequires:	smpeg-devel
 
 Provides:	python-pygame
+Provides:	python2-pygame
 
 %description
 pygame is a Python wrapper module for the SDL multimedia library,
@@ -64,11 +67,13 @@ Install the devel package if you want to build programs with pygame.
 %setup -q -n %{name}-%{version}release
 %patch0 -p1
 
-%__python config.py
+%__python2 config.py
 perl -pi -e 's|^(SDL = .*)|$1 -lm|;' Setup
 
 %build
-%__python setup.py build
+export CC=gcc
+export CXX=g++
+%__python2 setup.py build
 
 # Fix wrong permissions on various data files - AdamW 2008/12)
 chmod 0644 WHATSNEW \
@@ -77,14 +82,14 @@ chmod 0644 WHATSNEW \
 	lib/pygame.ico
 
 %install
-%__python setup.py install --prefix %{buildroot}%{_prefix}
+%__python2 setup.py install --prefix %{buildroot}%{_prefix}
 
 %files
-%{py_platsitedir}/*
+%{py2_platsitedir}/*
 %doc WHATSNEW
 
 %files devel
-%{_includedir}/python%{py_ver}/%{name}/
+%{_includedir}/python%{py2_ver}/%{name}/
 
 %files doc
 %doc docs/
