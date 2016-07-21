@@ -1,0 +1,2 @@
+addFilter("E: shared-lib-without-dependency-information")
+addFilter("E: non-executable-script")
