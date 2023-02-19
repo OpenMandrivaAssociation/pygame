@@ -106,5 +106,5 @@ rm -f src_c/ffmovie.[ch]
 %py_install
 
 # use system font
-ln -fs /usr/share/fonts/TTF/FreeSansBold.ttf %{buildroot}%{py3_platsitedir}/%{module}/freesansbold.ttf
+ln -fs /usr/share/fonts/TTF/FreeSansBold.ttf %{buildroot}%{py3_platsitedir}/pygame/freesansbold.ttf
 
