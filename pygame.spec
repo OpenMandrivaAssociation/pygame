@@ -87,6 +87,7 @@ Install the devel package if you want to build programs with pygame.
 #---------------------------------------------------------------------------
 
 %prep
+export LC_ALL=C.utf-8
 %autosetup -p1 -n pygame-%{version}
 
 # Drop pre-compiled Cython sources
