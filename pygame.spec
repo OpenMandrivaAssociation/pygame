@@ -82,7 +82,7 @@ the pySDL wrapper project, written by Mark Baker.
 Install the devel package if you want to build programs with pygame.
 
 %files devel
-%{_includedir}/python%{py_ver}/%{pygame}/
+%{_includedir}/python%{py_ver}/pygame/
 
 #---------------------------------------------------------------------------
 
