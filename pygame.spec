@@ -41,8 +41,8 @@ the python language.
 
 %files
 %doc README.rst
-%{py_platsitedir}/%{module}
-%{py_platsitedir}/%{module}-%{version}-py%{py_ver}.egg-info
+%{py_platsitedir}/pygame
+%{py_platsitedir}/pygame-%{version}-*.*-info
 
 #---------------------------------------------------------------------------
 
