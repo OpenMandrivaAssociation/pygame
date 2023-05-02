@@ -1,6 +1,6 @@
 Summary:	Python module for interfacing with the SDL multimedia library
 Name:		python-pygame
-Version:	2.3.0
+Version:	2.4.0
 Release:	1
 Source0:	https://pypi.io/packages/source/p/pygame/pygame-%{version}.tar.gz
 License:	LGPLv2+
