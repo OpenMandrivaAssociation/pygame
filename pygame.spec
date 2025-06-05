@@ -1,6 +1,6 @@
 Summary:	Python module for interfacing with the SDL multimedia library
 Name:		python-pygame
-Version:	2.5.1
+Version:	2.6.0
 Release:	1
 Source0:	https://pypi.io/packages/source/p/pygame/pygame-%{version}.tar.gz
 License:	LGPLv2+
@@ -8,11 +8,11 @@ Group:		System/Libraries
 URL:		https://pygame.org/
 
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	python3dist(cython)
-BuildRequires:	python3dist(pip)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:	python3dist(wheel)
-BuildRequires:	portmidi-devel
+BuildRequires:	python%{pyver}dist(cython)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
+BuildRequires:	pkgconfig(portmidi)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
@@ -100,7 +100,7 @@ perl -pi -e 's|^(SDL = .*)|$1 -lm|;' Setup
 rm -f src_c/ffmovie.[ch]
 
 %build
-%__python setup.py build cython
+%py_build
 
 %install
 %py_install
